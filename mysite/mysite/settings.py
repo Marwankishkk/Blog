@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,6 +38,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'blog.apps.BlogConfig',
+    'taggit',
+    "django.contrib.sites",
+    "django.contrib.sitemaps",
+    'django.contrib.postgres',
 ]
 
 MIDDLEWARE = [
@@ -74,12 +80,11 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
-
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql', 'NAME': 'blog',
+        'USER': 'blog',
+        'PASSWORD': '12345678',
+    }}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -88,9 +93,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator", },
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator", },
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator", },
 ]
 
 
@@ -115,3 +120,9 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'kishkmarwan49@gmail.com'
+EMAIL_HOST_PASSWORD = 'beus ysms ljjz xgle'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
